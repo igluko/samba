@@ -2,9 +2,9 @@ version: '3.4'
 
 services:
   samba:
-    image: elswork/samba
+    image: igluko/samba
     environment:
-      TZ: 'Europe/Madrid'
+      TZ: 'Europe/Moscow'
     networks:
       - default
     ports:
