@@ -31,7 +31,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and Push
-        run: make buildx
-        # Add your build and push commands here. 
-        # Example: docker buildx build --push --tag your-dockerhub-username/your-image-name:your-tag .
+        name: Build and Push to Docker Hub
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY##*/}"
+          docker buildx build --platform linux/amd64,linux/arm64 -t ${{ GITHUB_REPOSITORY }}:latest --push .
